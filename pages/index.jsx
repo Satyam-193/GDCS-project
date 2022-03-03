@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Subject from "../components/Sub";
 
 export default function Home() {
   return (
@@ -10,7 +11,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="text-3xl">Hello world</h1>
+      <div className="flex flex-wrap justify-center align-middle px-10 mt-4">
+        <Subject />
+        <Subject />
+        <Subject />
+      </div>
     </div>
   );
 }
