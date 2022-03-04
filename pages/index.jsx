@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Subject from "../components/Sub";
 
-export default function Home() {
+export default function Home({ json }) {
   return (
     <div>
       <Head>
@@ -12,10 +12,19 @@ export default function Home() {
       </Head>
 
       <div className="flex flex-wrap justify-center align-middle px-10 mt-4">
-        <Subject />
-        <Subject />
-        <Subject />
+        {json.map((item) => (
+          <Subject key={item._id} name={item.subjectName} desc={item.desc} />
+        ))}
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const data = await fetch("http://localhost:3000/api");
+  const json = await data.json();
+  console.log(json);
+  return {
+    props: { json },
+  };
 }
