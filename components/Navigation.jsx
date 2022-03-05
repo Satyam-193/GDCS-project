@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 
 const Navigation = () => {
   const { data: session } = useSession();
 
   if (session) {
+    const myLoader = ({ src, width, quality }) => {
+      return `${src}?w=${width}&q=${quality || 75}`;
+    };
     return (
       <nav className="bg-blue-500 flex justify-between align-middle text-white px-3 py-2">
         <ul className="flex space-x-5 text-2xl">
@@ -15,8 +19,18 @@ const Navigation = () => {
           </li>
           <li className="cursor-pointer hover:text-gray-200">Blogs</li>
           <li className="cursor-pointer hover:text-gray-200">About us</li>
+          <li className="cursor-pointer">
+            <Image
+              src={session.user.image}
+              loader={myLoader}
+              alt="image"
+              className="rounded-full"
+              width={40}
+              height={40}
+            />
+          </li>
           <li className="cursor-pointer hover:text-gray-200">
-            {session.user.email}
+            {session.user.name}
           </li>
         </ul>
 
