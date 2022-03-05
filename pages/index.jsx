@@ -13,7 +13,12 @@ export default function Home({ json }) {
 
       <div className="flex flex-wrap justify-center align-middle px-10 mt-4">
         {json.map((item) => (
-          <Subject key={item._id} name={item.subjectName} desc={item.desc} />
+          <Subject
+            key={item._id}
+            name={item.subjectName}
+            desc={item.desc}
+            id={item._id}
+          />
         ))}
       </div>
     </div>
@@ -21,9 +26,8 @@ export default function Home({ json }) {
 }
 
 export async function getStaticProps() {
-  const data = await fetch("http://localhost:3000/api");
+  const data = await fetch(`${process.env.API_URL}/api`);
   const json = await data.json();
-  console.log(json);
   return {
     props: { json },
   };

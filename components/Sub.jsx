@@ -1,4 +1,6 @@
-const Subject = ({ name, desc }) => {
+import Link from "next/dist/client/link";
+
+const Subject = ({ name, desc, id }) => {
   const descToBeDisplay = desc.slice(0, 200);
 
   return (
@@ -6,9 +8,14 @@ const Subject = ({ name, desc }) => {
       <div className="w-full h-36 bg-gray-600 rounded-t-md"></div>
       <h1 className="text-3xl font-semibold py-3 px-1">{name}</h1>
       <p className="px-1 py-2">{descToBeDisplay}</p>
-      <button className="bg-orange-500 text-xl rounded-md mx-1 mb-2 mt-4 px-4 py-1 hover:bg-orange-600 text-white">
-        Read more
-      </button>
+      {/* <button className="bg-orange-500 text-xl rounded-md mx-1 mb-2 mt-4 px-4 py-1 hover:bg-orange-600 text-white">
+        Read more 
+      </button> */}
+      <Link href={`/blog/${id}`}>
+        <a className="bg-orange-500 text-xl rounded-md mx-1 mb-2 mt-4 px-4 py-1 hover:bg-orange-600 text-white">
+          Read more
+        </a>
+      </Link>
     </div>
   );
 };

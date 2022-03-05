@@ -4,7 +4,11 @@ const Navigation = () => {
   return (
     <nav className="bg-blue-500 flex justify-between align-middle text-white px-3 py-2">
       <ul className="flex space-x-5 text-2xl">
-        <li className="cursor-pointer hover:text-gray-200">Home</li>
+        <li className="cursor-pointer hover:text-gray-200">
+          <Link href={"/"}>
+            <a>Home</a>
+          </Link>
+        </li>
         <li className="cursor-pointer hover:text-gray-200">Blogs</li>
         <li className="cursor-pointer hover:text-gray-200">About us</li>
       </ul>
