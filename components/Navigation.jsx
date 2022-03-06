@@ -60,7 +60,10 @@ const Navigation = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button className="bg-orange-500 text-xl rounded-md mx-3 px-4 py-1 text-white hover:bg-orange-600">
+            <button
+              type="submit"
+              className="bg-orange-500 text-xl rounded-md mx-3 px-4 py-1 text-white hover:bg-orange-600"
+            >
               Search
             </button>
           </form>
@@ -87,18 +90,31 @@ const Navigation = () => {
           <li className="cursor-pointer hover:text-gray-200">About us</li>
         </ul>
 
-        <div>
-          <input
-            className="rounded-md px-1 py-1 focus:outline-none text-black focus:outline-blue-700"
-            type="text"
-            placeholder="Search..."
-          />
-          <button className="bg-orange-500 text-xl rounded-md mx-3 px-4 py-1 hover:bg-orange-600">
-            Search
-          </button>
+        <div className="flex">
+          <form
+            className="flex"
+            onSubmit={(e) => {
+              e.preventDefault();
+              doSearch();
+            }}
+          >
+            <input
+              className="rounded-md px-1 py-1 focus:outline-none focus:outline-blue-700 text-black"
+              type="text"
+              placeholder="Search..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="bg-orange-500 text-xl rounded-md mx-3 px-4 py-1 text-white hover:bg-orange-600"
+            >
+              Search
+            </button>
+          </form>
 
           <button
-            className="bg-orange-500 text-xl rounded-md mx-2 px-4 py-1 hover:bg-orange-600"
+            className="bg-orange-500 text-xl rounded-md mx-2 px-4 py-1 hover:bg-orange-600 text-white"
             onClick={(e) => signIn()}
           >
             Log in
