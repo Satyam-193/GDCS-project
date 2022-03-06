@@ -9,6 +9,11 @@ const subject = {
       type: "string",
     },
     {
+      title: "Subject image",
+      name: "subImg",
+      type: "image",
+    },
+    {
       title: "Description",
       name: "desc",
       type: "text",

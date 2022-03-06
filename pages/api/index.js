@@ -8,6 +8,7 @@ const handler = async (req, res) => {
         _id,
         subjectName,
         desc,
+        subImg,
       }`);
 
     res.send(data);

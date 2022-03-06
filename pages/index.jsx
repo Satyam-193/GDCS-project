@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
 import Subject from "../components/Sub";
+import { urlFor } from "../lib/sanity";
 
+// this is the home page
 export default function Home({ json }) {
   return (
     <div>
@@ -18,6 +19,7 @@ export default function Home({ json }) {
             name={item.subjectName}
             desc={item.desc}
             id={item._id}
+            img={urlFor(item.subImg).url()}
           />
         ))}
       </div>
@@ -25,6 +27,7 @@ export default function Home({ json }) {
   );
 }
 
+// this will statically put all the subject details
 export async function getStaticProps() {
   const data = await fetch(`${process.env.API_URL}/api`);
   const json = await data.json();
